@@ -4,6 +4,7 @@ import { MessageService } from 'primeng/api';
 interface Tab {
   name: string;
   index: number;
+  disabled: boolean;
 }
 
 @Component({
@@ -32,17 +33,17 @@ export class AppComponent {
 
   constructor(private messageService: MessageService) {
     this.tabs = [
-      { name: 'Tracking', index: 0 },
-      { name: 'Electrical Defects', index: 1 },
-      { name: 'Details', index: 2 },
-      { name: 'Process Info', index: 3 },
-      { name: 'Tools', index: 4 },
-      { name: 'Abnormality Analysis', index: 5 },
-      { name: 'Root Causes', index: 6 },
-      { name: 'Containment', index: 7 },
-      { name: 'Permanent Countermeasures', index: 8 },
-      { name: 'Re-Open Comments', index: 9 },
-      { name: 'Close Comments', index: 10 },
+      { name: 'Tracking', index: 0, disabled: false },
+      { name: 'Electrical Defects', index: 1, disabled: true },
+      { name: 'Details', index: 2, disabled: true },
+      { name: 'Process Info', index: 3, disabled: true },
+      { name: 'Tools', index: 4, disabled: true },
+      { name: 'Abnormality Analysis', index: 5, disabled: true },
+      { name: 'Root Causes', index: 6, disabled: true },
+      { name: 'Containment', index: 7, disabled: true },
+      { name: 'Permanent Countermeasures', index: 8, disabled: true },
+      { name: 'Re-Open Comments', index: 9, disabled: true },
+      { name: 'Close Comments', index: 10, disabled: true },
     ];
     this.selectedTab = 0;
   }
@@ -73,6 +74,9 @@ export class AppComponent {
 
   nextTab(): void {
     this.doneTabs[this.selectedTab] = true;
-    if (this.selectedTab < 10) this.selectedTab++;
+    if (this.selectedTab < 10) {
+        this.selectedTab++;
+        this.tabs[this.selectedTab].disabled = false;
+    }
   }
 }

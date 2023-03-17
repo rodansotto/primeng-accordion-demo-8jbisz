@@ -16,7 +16,7 @@
 </div>
 <div class="flex flex-row" style="height:35rem">
 <div class="w-26rem mr-3">
-<p-listbox [(ngModel)]="selectedTab" [options]="tabs" optionLabel="name" optionValue="index">
+<p-listbox [(ngModel)]="selectedTab" [options]="tabs" optionLabel="name" optionValue="index" optionDisabled="disabled">
     <ng-template let-tab pTemplate="item">
         <div>{{tab.name}}</div>
         <div *ngIf="doneTabs[tab.index]" class="pi pi-check ml-auto" [ngStyle]="{fontSize:'1.5rem',color:'var(--green-500)'}"></div>
