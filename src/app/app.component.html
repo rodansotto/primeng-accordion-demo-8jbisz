@@ -1,0 +1,67 @@
+<p-panel header="ICS Defect Details">
+    <p-skeleton height="5rem" animation="none" styleClass="surface-400"></p-skeleton>
+</p-panel>
+<div class="mt-3 mb-3">
+<p-inplace>
+<ng-template pTemplate="display">
+    <div class="inline-flex align-items-center">
+        <span class="pi pi-image" style="vertical-align: middle"></span>
+        <span class="ml-2">View Defect Image</span>
+    </div>
+</ng-template>
+<ng-template pTemplate="content">
+    <img src="https://tse2.mm.bing.net/th/id/OIP.2-1nyMV0uS5OJ3UfWi1CqgAAAA?pid=ImgDet&rs=1" alt="Defect Image">
+</ng-template>
+</p-inplace>
+</div>
+<div class="flex flex-row" style="height:35rem">
+<div class="w-26rem mr-3">
+<p-listbox [(ngModel)]="selectedTab" [options]="tabs" optionLabel="name" optionValue="index">
+    <ng-template let-tab pTemplate="item">
+        <div>{{tab.name}}</div>
+        <div *ngIf="doneTabs[tab.index]" class="pi pi-check ml-auto" [ngStyle]="{fontSize:'1.5rem',color:'var(--green-500)'}"></div>
+    </ng-template>
+</p-listbox>
+</div>
+<div class="w-full">
+    <p-panel header="Tracking" *ngIf="selectedTab=='0'">
+        <p-skeleton height="5rem" animation="none" styleClass="surface-400"></p-skeleton>
+    </p-panel>
+    <p-panel header="Electrical Defects" *ngIf="selectedTab=='1'">
+        <p-skeleton height="10rem" animation="none" styleClass="surface-400"></p-skeleton>
+    </p-panel>
+    <p-panel header="Details" *ngIf="selectedTab=='2'">
+        <p-skeleton height="15rem" animation="none" styleClass="surface-400"></p-skeleton>
+    </p-panel>
+    <p-panel header="Process Info" *ngIf="selectedTab=='3'">
+        <p-skeleton height="20rem" animation="none" styleClass="surface-400"></p-skeleton>
+    </p-panel>
+    <p-panel header="Tools" *ngIf="selectedTab=='4'">
+        <p-skeleton height="10rem" animation="none" styleClass="surface-400"></p-skeleton>
+    </p-panel>
+    <p-panel header="Abnormality Analysis" *ngIf="selectedTab=='5'">
+        <p-skeleton height="25rem" animation="none" styleClass="surface-400"></p-skeleton>
+    </p-panel>
+    <p-panel header="Root Causes" *ngIf="selectedTab=='6'">
+        <p-skeleton height="30rem" animation="none" styleClass="surface-400"></p-skeleton>
+    </p-panel>
+    <p-panel header="Containment" *ngIf="selectedTab=='7'">
+        <p-skeleton height="5rem" animation="none" styleClass="surface-400"></p-skeleton>
+    </p-panel>
+    <p-panel header="Permanent Countermeasures" *ngIf="selectedTab=='8'">
+        <p-skeleton height="5rem" animation="none" styleClass="surface-400"></p-skeleton>
+    </p-panel>
+    <p-panel header="Re-Open Comments" *ngIf="selectedTab=='9'">
+        <p-skeleton height="5rem" animation="none" styleClass="surface-400"></p-skeleton>
+    </p-panel>
+    <p-panel header="Close Comments" *ngIf="selectedTab=='10'">
+        <p-skeleton height="5rem" animation="none" styleClass="surface-400"></p-skeleton>
+    </p-panel>
+    <div class="flex justify-content-end">
+    <button pButton type="button" label="Previous" class="mt-3 mr-3" [disabled]="selectedTab=='0'" (click)="previousTab()"></button>
+    <button pButton type="button" label="Next" class="mt-3" [disabled]="selectedTab=='11'" (click)="nextTab()"></button>
+    </div>
+    </div>
+</div>
+<button pButton type="button" label="Save" class="mt-3 mr-3"></button>
+<button pButton type="button" label="Submit..." class="mt-3" disabled="true"></button>
